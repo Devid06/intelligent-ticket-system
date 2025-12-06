@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">Support Ticket Queue</h2>
+<div class="row">
+    {% for ticket in tickets %}
+    <div class="col-md-6 mb-3">
+        <div class="card h-100 border-start border-5 
+            {% if ticket.priority == 'Critical' %}border-danger{% elif ticket.priority == 'High' %}border-warning{% else %}border-success{% endif %}">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <h5 class="card-title">{{ ticket.title }}</h5>
+                    <span class="badge bg-secondary">{{ ticket.priority }}</span>
+                </div>
+                <p class="card-text text-muted small">{{ ticket.description }}</p>
+                <div class="alert alert-info py-2">
+                    <strong>🤖 AI Suggestion:</strong> {{ ticket.ai_suggested_fix }}
+                </div>
+                <div class="d-flex justify-content-between text-muted small">
+                    <span>ID: #{{ ticket.id }}</span>
+                    <span>{{ ticket.created_at.strftime('%Y-%m-%d') }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

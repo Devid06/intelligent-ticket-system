@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow-sm mx-auto" style="max-width: 600px;">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">Log New Support Issue</h4>
+    </div>
+    <div class="card-body">
+        <form action="/submit" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Issue Title</label>
+                <input type="text" name="title" class="form-control" placeholder="e.g., Laptop keeps restarting" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" rows="4" placeholder="Describe the steps to reproduce..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Submit Ticket</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
